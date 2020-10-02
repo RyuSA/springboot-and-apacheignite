@@ -1,4 +1,4 @@
-package com.github.ryusa.stackoverflow.springcannotconnecttoignite;
+package com.github.ryusa.stackoverflow.springandapacheignite;
 
 import org.apache.ignite.Ignite;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.github.ryusa.stackoverflow.springcannotconnecttoignite;
+package com.github.ryusa.stackoverflow.springandapacheignite;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
