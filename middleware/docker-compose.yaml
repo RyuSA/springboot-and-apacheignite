@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  server-1:
+    image: apacheignite/ignite:2.8.1
+    environment:
+      - OPTION_LIBS=ignite-rest-http
+      - JVM_OPTS=-Xms512m -Xmx512m -server -XX:+AggressiveOpts
+      - CONFIG_URI=file:///myconfig/ignite-configuration.xml      
+      - IGNITE_QUIET=false
+    ports:
+      - "11211:11211" # JDBC port number.
+      - "47101:47100" # communication SPI port number.
+      - "47501:47500" # discovery SPI port number.
+      - "18081:8080" # REST port number.
+      - "10901:10900" #Thin clients port number.
+    volumes:
+      - ./myconfig/ignite-configuration.xml:/myconfig/ignite-configuration.xml:ro
+
+  server-2:
+    image: apacheignite/ignite:2.8.1
+    environment:
+      - OPTION_LIBS=ignite-rest-http
+      - JVM_OPTS=-Xms512m -Xmx512m -server -XX:+AggressiveOpts
+      - CONFIG_URI=file:///myconfig/ignite-configuration.xml      
+      - IGNITE_QUIET=false
+    ports:
+      - "11212:11211"
+      - "47102:47100"
+      - "47502:47500"
+      - "18082:8080"
+      - "10902:10900"
+    volumes:
+      - ./myconfig/ignite-configuration.xml:/myconfig/ignite-configuration.xml:ro
