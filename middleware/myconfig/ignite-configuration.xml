@@ -9,8 +9,15 @@
   <bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
     <property name="peerClassLoadingEnabled" value="true"/>
 
+    <property name="communicationSpi">
+      <bean class="org.apache.ignite.spi.communication.tcp.TcpCommunicationSpi">
+        <property name="localPort" value="#{systemEnvironment['IGNITE_COMMUNICATION_LOCALPORT']}" />
+      </bean>
+    </property>
+
     <property name="discoverySpi">
       <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+        <property name="localPort" value="#{systemEnvironment['IGNITE_DISCOVERY_LOCALPORT']}" />
         <property name="ipFinder">
           <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder">
             <property name="addresses">
